@@ -69,6 +69,7 @@ namespace SnackateriaProPlus
 
 
 
+
             Console.WriteLine("Welcome to the Snackateria. May I have your order?");
             // Welcome to the Snackaterium.
             // I'm... uh... Mitch.
