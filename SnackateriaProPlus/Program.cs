@@ -39,6 +39,21 @@ namespace SnackateriaProPlus
             pMenu.Add(new MenuItem() { name = "Hot Wing", price = 7.99 });
         }
 
+        static void PrintMenu(List<IMenuItem> pMenu)
+        {
+            string menuHead = " -----------------------------------------";
+            Console.SetCursorPosition((Console.WindowWidth - menuHead.Length) / 2, Console.CursorTop);
+            Console.WriteLine(menuHead);
+            foreach( IMenuItem item in pMenu)
+            {
+                Console.SetCursorPosition((Console.WindowWidth - menuHead.Length) / 2, Console.CursorTop);
+                Console.WriteLine("| " + item.name+" "+(new StringBuilder().Insert(0,".",(menuHead.Length - item.name.Length - (Math.Round(item.price, 2).ToString().Length) - 6)).ToString())+" $"+ Math.Round(item.price, 2).ToString() + " |");
+            }
+            Console.SetCursorPosition((Console.WindowWidth - menuHead.Length) / 2, Console.CursorTop);
+            Console.WriteLine(menuHead);
+
+        }
+
         static void Main(string[] args)
         {
             // Set the console for unicode
@@ -54,7 +69,13 @@ namespace SnackateriaProPlus
             //Set up the menu
             SetUpMenu(lMenu);
 
-            Console.WriteLine("Welcome to the Snackateria. May I have your order?");
+            Console.SetCursorPosition((Console.WindowWidth - "Welcome to the Snackateria.".Length) / 2, Console.CursorTop);
+            Console.WriteLine("Welcome to the Snackateria.");
+            PrintMenu(lMenu);
+
+            Console.WriteLine("I'm Chet.");
+            Console.WriteLine("May I have your order?");
+
             // Welcome to the Snackaterium.
             // I'm... uh... Mitch.
             // Can I help your order?
