@@ -26,7 +26,25 @@ namespace SnackateriaProPlus
 
             return pMenu[0];
         }
-    } 
+    }
+
+    public class MenuItemExtraChubby : MenuItemLarge
+    {
+
+        public MenuItemExtraChubby(IMenuItem pMenuItem) : base(pMenuItem)
+        {
+        }
+
+        public override string GetSize()
+        {
+            return "XDC";
+        }
+
+        public override double GetPrice()
+        {
+            return base.GetPrice()*2;
+        }
+    }
 
     class Program
     {
@@ -109,6 +127,9 @@ namespace SnackateriaProPlus
                         break;
                     case "D":
                         lOrder.Add(new MenuItemDoubleChubby(selectedItem));
+                        break;
+                    case "X":
+                        lOrder.Add(new MenuItemExtraChubby(selectedItem));
                         break;
                     default:
                         Console.WriteLine("Uhh... I'll have to ask my manager.");

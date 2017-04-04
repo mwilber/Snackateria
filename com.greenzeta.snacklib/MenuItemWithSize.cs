@@ -18,7 +18,7 @@ namespace com.greenzeta.snacklib
     public class MenuItemLarge : IMenuItemWithSize
     {
         internal string name;
-        internal double price;
+        internal double price { get; set; }
 
         public MenuItemLarge()
         {
