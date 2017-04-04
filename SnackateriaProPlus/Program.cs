@@ -7,26 +7,6 @@ using com.greenzeta.snacklib;
 
 namespace SnackateriaProPlus
 {
-    static class LangParser
-    {
-        static public IMenuItem FindMatch(string pWords, List<IMenuItem> pMenu)
-        {
-            string[] arrOrderWords = pWords.ToLower().Split();
-            int matchCt = 0;
-            IMenuItem result;
-
-            for(int idx=0; idx<pMenu.Count; idx++)
-            {
-                matchCt = 0;
-                for( int jdx=0; jdx<arrOrderWords.Length; jdx++)
-                {
-                    //if( pMenu[idx].con )
-                }
-            }
-
-            return pMenu[0];
-        }
-    }
 
     public class MenuItemExtraChubby : MenuItemLarge
     {
@@ -74,17 +54,6 @@ namespace SnackateriaProPlus
             //Set up the menu
             SetUpMenu(lMenu);
 
-            //strOrder = "a blah please";
-            //selectedItem = LangParser.FindMatch(strOrder, lMenu);
-
-            strOrder = "hot wings please";
-            //string[] arrOrderWords = strOrder.ToLower().Split();
-            //List<IMenuItem> listMatches = (from item in lMenu
-            //                where arrOrderWords.Any(w => item.name.ToLower().Contains(w))
-            //                select item).ToList<IMenuItem>();
-
-            
-
             Console.WriteLine("Welcome to the Snackateria. May I have your order?");
             // Welcome to the Snackaterium.
             // I'm... uh... Mitch.
@@ -98,10 +67,6 @@ namespace SnackateriaProPlus
             // Can I HAVE your order.
 
             strOrder = Console.ReadLine();
-
-            //selectedItem = (from item in lMenu
-            //                where item.name.ToLower() == strOrder.ToLower()
-            //                select item).FirstOrDefault<IMenuItem>();
 
             selectedItem = null;
             for (int idx = 0; idx < lMenu.Count; idx++)
