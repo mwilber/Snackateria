@@ -44,7 +44,7 @@ namespace SnackateriaProPlus
             // Set the console for unicode
             System.Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            string strOrder;
+            string strOrder = "";
             double dTotal = 0;
             List<IMenuItem> lMenu = new List<IMenuItem>();
             List<IMenuItemWithSize> lOrder = new List<IMenuItemWithSize>();
@@ -66,39 +66,44 @@ namespace SnackateriaProPlus
             // I'm Mitch.
             // Can I HAVE your order.
 
-            strOrder = Console.ReadLine();
-
-            selectedItem = null;
-            for (int idx = 0; idx < lMenu.Count; idx++)
+            while (strOrder.ToLower() != "no")
             {
-                if (strOrder.ToLower().Contains(lMenu[idx].name.ToLower()))
-                {
-                    selectedItem = lMenu[idx];
-                }
-            }
-
-            if (selectedItem != null)
-            {
-                Console.WriteLine("What size? We have (L)arge, (C)hubby, and (D)ouble Super Chubby\u2122!");
                 strOrder = Console.ReadLine();
 
-                switch (strOrder.ToUpper())
+                selectedItem = null;
+                for (int idx = 0; idx < lMenu.Count; idx++)
                 {
-                    case "L":
-                        lOrder.Add(new MenuItemLarge(selectedItem));
-                        break;
-                    case "C":
-                        lOrder.Add(new MenuItemChubby(selectedItem));
-                        break;
-                    case "D":
-                        lOrder.Add(new MenuItemDoubleChubby(selectedItem));
-                        break;
-                    case "X":
-                        lOrder.Add(new MenuItemExtraChubby(selectedItem));
-                        break;
-                    default:
-                        Console.WriteLine("Uhh... I'll have to ask my manager.");
-                        break;
+                    if (strOrder.ToLower().Contains(lMenu[idx].name.ToLower()))
+                    {
+                        selectedItem = lMenu[idx];
+                    }
+                }
+
+                if (selectedItem != null)
+                {
+                    Console.WriteLine("What size? We have (L)arge, (C)hubby, and (D)ouble Super Chubby\u2122!");
+                    strOrder = Console.ReadLine();
+
+                    switch (strOrder.ToUpper())
+                    {
+                        case "L":
+                            lOrder.Add(new MenuItemLarge(selectedItem));
+                            break;
+                        case "C":
+                            lOrder.Add(new MenuItemChubby(selectedItem));
+                            break;
+                        case "D":
+                            lOrder.Add(new MenuItemDoubleChubby(selectedItem));
+                            break;
+                        case "X":
+                            lOrder.Add(new MenuItemExtraChubby(selectedItem));
+                            break;
+                        default:
+                            Console.WriteLine("Uhh... I'll have to ask my manager.");
+                            break;
+                    }
+
+                    Console.WriteLine("One " + selectedItem.name + ". Anything else?");
                 }
             }
 
